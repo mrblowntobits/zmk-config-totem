@@ -48,6 +48,40 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
+        combo_return {
+            timeout-ms = <50>;
+            key-positions = <16 17 18>;
+            bindings = <&kp RET>;
+        };
+        combo_ae {
+            timeout-ms = <50>;
+            key-positions = <10 11>;
+            bindings = <&kp DE_A_UMLAUT>;
+        };
+        combo_ue {
+            timeout-ms = <50>;
+            key-positions = <6 7>;
+            bindings = <&kp DE_U_UMLAUT>;
+        };
+        combo_oe {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp DE_O_UMLAUT>;
+        };
+        combo_sz {
+            timeout-ms = <50>;
+            key-positions = <11 12>;
+            bindings = <&kp DE_SZ>;
+        };
+    };
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
@@ -68,9 +102,7 @@
         // left thumb switches to symbol layer, right thumb switches to navigation layer
         //
         // still missing:
-        // - double Tap for @
         // - ? at shift layer for !
-        // - double tap for ~ at -
         // - combos for umlaute
         // - combos for esc, enter
 
@@ -80,7 +112,7 @@
                         &td0        &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
                         &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F   &kp DE_G                  &kp DE_H      &kp DE_J    &kp DE_K      &kp DE_L    &kp DE_EXCLAMATION
             &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &td1                  &sk LSHFT
-                                                &kp BSPC     &mo Sym    &kp LSHFT                 &kp SPACE     &mo Nav     &kp DEL
+                                                &kp DEL      &kp SPACE  &kp LALT                  &kp TAB       &kp SPACE   &kp RET
             >;
         };
 
