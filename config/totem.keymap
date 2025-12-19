@@ -77,9 +77,9 @@
         Base {
             label = "Base";
             bindings = <
-                        &kp td0     &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
+                        &td0        &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
                         &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F   &kp DE_G                  &kp DE_H      &kp DE_J    &kp DE_K      &kp DE_L    &kp DE_EXCLAMATION
-            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &kp DE_MINUS        &sk LSHFT
+            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &td1                  &sk LSHFT
                                                 &kp BSPC     &mo Sym    &kp LSHFT                 &kp SPACE     &mo Nav     &kp DEL
             >;
         };
