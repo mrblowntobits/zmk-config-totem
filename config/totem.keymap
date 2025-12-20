@@ -21,6 +21,12 @@
 #define Sym             1
 #define Nav             2
 #define Adjust          3
+#define Ex1             4
+#define Ex2             5
+#define Ex3             6
+#define Ex4             7
+#define Ex5             8
+#define Ex6             9
 
 &sk {
     release-after-ms = <1000>;
@@ -34,17 +40,37 @@
 / {
 
     behaviors {
-        td0: tap_dance_0 {
+        q_at: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp DE_Q>, <&kp DE_AT>, <&none>;
         };
-        td1: tap_dance_1 {
+        min_tild: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp DE_MINUS>, <&kp DE_TILDE>, <&none>;
+        };
+        gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+        };
+        exc_que: excl_quest {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_EXCLAMATION>, <&kp DE_QUESTION>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
         };
     };
 
@@ -102,17 +128,16 @@
         // left thumb switches to symbol layer, right thumb switches to navigation layer
         //
         // still missing:
-        // - ? at shift layer for !
-        // - combos for umlaute
-        // - combos for esc, enter
+        // - bspc_del
+        // - &lt
 
         Base {
             label = "Base";
             bindings = <
-                        &td0        &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
-                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F   &kp DE_G                  &kp DE_H      &kp DE_J    &kp DE_K      &kp DE_L    &kp DE_EXCLAMATION
-            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &td1                  &sk LSHFT
-                                                &kp DEL      &kp SPACE  &kp LALT                  &kp TAB       &kp SPACE   &kp BSPC
+                        &q_at        &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
+                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F   &kp DE_G                  &kp DE_H      &kp DE_J    &kp DE_K      &kp DE_L    &exc_que
+            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &min_tild                  &sk RSFT
+                                                &bspc_del      &lt Ex1 SPACE      &kp LALT             &kp TAB       &lt Ex1 SPACE  &kp BSPC
             >;
         };
 
@@ -127,7 +152,7 @@
                           &kp LT     &kp LBKT  &kp LBRC  &kp LPAR   &kp AMPS         &kp AT     &kp  RPAR      &kp  RBRC    &kp RBKT  &kp GT
                           &sk LSHFT  &sk LALT  &sk LGUI  &sk LCTRL  &kp EQUAL        &kp TILDE  &msc SCRL_DOWN &msc SCRL_UP &none     &none
             &kp LG(Z)     &kp HASH   &kp PIPE  &kp STAR  &kp MINUS  &kp PLUS         &kp CARET  &kp  BSLH      &kp  DLLR    &kp EXCL  &kp PRCNT  &kp GRAVE
-                                               &kp DEL   &none      &none            &kp SPACE  &mo  Nav       &kp  LG(RET)
+                                               &kp DEL   &none      &none            &kp SPACE  &mo  Sym       &kp  LG(RET)
             >;
         };
 
@@ -158,24 +183,64 @@
             >;
         };
 
-        extra2 {
-            status = "reserved";
+        Ex1 {
+            label = "Ex1";
+            bindings = <
+                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
+                                               &none      &none     &none                   &none       &none     &none
+            >;
         };
 
-        extra3 {
-            status = "reserved";
+        Ex2 {
+            label = "Ex2";
+            bindings = <
+                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
+                                               &none      &none     &none                   &none       &none     &none
+            >;
         };
 
-        extra4 {
-            status = "reserved";
+        Ex3 {
+            label = "Ex3";
+            bindings = <
+                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
+                                               &none      &none     &none                   &none       &none     &none
+            >;
         };
 
-        extra5 {
-            status = "reserved";
+        Ex4 {
+            label = "Ex4";
+            bindings = <
+                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
+                                               &none      &none     &none                   &none       &none     &none
+            >;
         };
 
-        extra6 {
-            status = "reserved";
+        Ex5 {
+            label = "Ex5";
+            bindings = <
+                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
+                                               &none      &none     &none                   &none       &none     &none
+            >;
+        };
+
+        Ex6 {
+            label = "Ex6";
+            bindings = <
+                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
+                                               &none      &none     &none                   &none       &none     &none
+            >;
         };
     };
 };
