@@ -52,6 +52,12 @@
             tapping-term-ms = <200>;
             bindings = <&kp DE_MINUS>, <&kp DE_TILDE>, <&none>;
         };
+        slash_bslash: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_SLASH>, <&kp DE_BACKSLASH>, <&none>;
+        };
         gresc: grave_escape {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -186,10 +192,10 @@
         Ex1 {
             label = "Ex1";
             bindings = <
-                        &none       &kp DE_7      &kp DE_8      &kp DE_9     &none              &none        &kp HOME      &kp UP       &kp END      &none
-                        &kp DE_0    &kp DE_4      &kp DE_5      &kp DE_6     &none              &none        &kp LEFT      &kp DOWN     &kp RIGHT    &none
-            &none       &none       &kp DE_1      &kp DE_2      &kp DE_3     &none              &none        &none         &none        &none        &none      &none
-                                                  &none         &none        &none              &none        &none         &none
+                        &slash_bslash      &kp DE_N7      &kp DE_N8      &kp DE_N9     &none              &none        &kp HOME      &kp UP       &kp END      &none
+                        &kp DE_N0          &kp DE_N4      &kp DE_N5      &kp DE_N6     &none              &none        &kp LEFT      &kp DOWN     &kp RIGHT    &none
+            &none       &none              &kp DE_N1      &kp DE_N2      &kp DE_N3     &none              &none        &none         &none        &none        &none      &none
+                                                         &none         &none        &none              &none        &none         &none
             >;
         };
 
