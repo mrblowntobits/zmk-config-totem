@@ -129,15 +129,15 @@
         //
         // still missing:
         // - bspc_del
-        // - &lt
+        // - symbols
 
         Base {
             label = "Base";
             bindings = <
-                        &q_at        &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
+                        &q_at       &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
                         &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F   &kp DE_G                  &kp DE_H      &kp DE_J    &kp DE_K      &kp DE_L    &exc_que
             &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &min_tild                  &sk RSFT
-                                                &bspc_del      &lt Ex1 SPACE      &kp LALT             &kp TAB       &lt Ex1 SPACE  &kp BSPC
+                                                &kp DEL      &lt Ex1 SPACE      &kp LALT             &kp TAB       &lt Ex1 SPACE  &kp BSPC
             >;
         };
 
@@ -186,10 +186,10 @@
         Ex1 {
             label = "Ex1";
             bindings = <
-                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
-                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
-            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
-                                               &none      &none     &none                   &none       &none     &none
+                        &none       &kp DE_7      &kp DE_8      &kp DE_9     &none              &none        &kp HOME      &kp UP       &kp END      &none
+                        &kp DE_0    &kp DE_4      &kp DE_5      &kp DE_6     &none              &none        &kp LEFT      &kp DOWN     &kp RIGHT    &none
+            &none       &none       &kp DE_1      &kp DE_2      &kp DE_3     &none              &none        &none         &none        &none        &none      &none
+                                                  &none         &none        &none              &none        &none         &none
             >;
         };
 
