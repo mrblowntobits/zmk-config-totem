@@ -19,7 +19,7 @@
 
 #define Base            0
 #define Comp            1
-#define Ex2             2
+#define Func            2
 #define Ex3             3
 #define Ex4             4
 #define Ex5             5
@@ -149,8 +149,8 @@
            compatible = "zmk,behavior-mod-morph";
            #binding-cells = <0>;
            bindings = <&kp BACKSPACE>, <&kp DELETE>;
-           mods = <(MOD_RCTRL)>;
-           keep-mods = <(MOD_RCTRL)>;
+           mods = <(MOD_RCTL)>;
+           keep-mods = <(MOD_RCTL)>;
         };
 
 };
@@ -192,6 +192,11 @@
             key-positions = <20 21>;
             bindings = <&kp LGUI>;
         };
+        combo_func {
+            timeout-ms = <50>;
+            key-positions = <20 31>;
+            bindings = <&sl Func>;
+        };
 
     };
 
@@ -220,10 +225,10 @@
         Base {
             label = "Base";
             bindings = <
-                        &q_at       &kp DE_W    &kp DE_E     &kp DE_R            &kp DE_T                  &kp DE_Z      &kp DE_U       &kp DE_I            &kp DE_O    &kp DE_P
-                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F            &kp DE_G                  &kp DE_H      &kp DE_J       &kp DE_K            &kp DE_L    &exc_que
-            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V            &kp DE_B                  &kp DE_N      &kp DE_M       &kp DE_COMMA        &kp DE_DOT  &min_tild     &sk RSFT
-                                                &kp DEL      &lt Ex1 SPACE       &kp LALT                  &kp TAB       &lt Ex1 SPACE  &backspace_delete
+                        &q_at       &kp DE_W    &kp DE_E     &kp DE_R            &kp DE_T                  &kp DE_Z      &kp DE_U          &kp DE_I            &kp DE_O    &kp DE_P
+                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F            &kp DE_G                  &kp DE_H      &kp DE_J          &kp DE_K            &kp DE_L    &exc_que
+            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V            &kp DE_B                  &kp DE_N      &kp DE_M          &kp DE_COMMA        &kp DE_DOT  &min_tild     &sk RSFT
+                                                &kp DEL      &lt Comp SPACE      &kp LALT                  &kp TAB       &lt Comp SPACE    &backspace_delete
             >;
         };
 
@@ -240,10 +245,10 @@
         Func {
             label = "Func";
             bindings = <
-                         &none       &kp F7     &kp F8     &kp F9    &F10                    &none       &none     &none       &none     &none
-                         &none       &kp F4     &kp F5     &kp F6    &F11                    &none       &none     &none       &none     &none
-            &trans       &none       &kp F1     &kp F2     &kp F3    &F12                    &none       &none     &none       &none     &none        &trans
-                                                &trans     &trans    &trans                  &trans      &trans    &trans
+                         &none       &kp F7     &kp F8     &kp F9    &kp F10                    &none       &none     &none       &none     &none
+                         &none       &kp F4     &kp F5     &kp F6    &kp F11                    &none       &none     &none       &none     &none
+            &trans       &none       &kp F1     &kp F2     &kp F3    &kp F12                    &none       &none     &none       &none     &none        &trans
+                                                &trans     &trans    &trans                     &trans      &trans    &trans
             >;
         };
 
