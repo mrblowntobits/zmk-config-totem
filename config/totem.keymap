@@ -52,18 +52,94 @@
             tapping-term-ms = <200>;
             bindings = <&kp DE_MINUS>, <&kp DE_TILDE>, <&none>;
         };
-        slash_bslash: tap_dance_2 {
+        slash_backslash: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp DE_SLASH>, <&kp DE_BACKSLASH>, <&none>;
         };
+
+
+        double_quote_single_quote: tap_dance_3 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_DQT>, <&kp DE_SQT>, <&none>;
+        };
+
+        caret_pipe: tap_dance_4 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_CARET>, <&kp DE_PIPE>, <&none>;
+        };
+
+        dollar_euro: tap_dance_5 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_DOLLAR>, <&kp DE_EURO>, <&none>;
+        };
+
+        than: tap_dance_6 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_LT>, <&kp DE_GT>, <&none>;
+        };
+
+
+        parenthesis: tap_dance_7 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_LPAR>, <&kp DE_RPAR>, <&none>;
+        };
+
+
+        brackets: tap_dance_9 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_LBKT>, <&kp DE_RBKT>, <&none>;
+        };
+
+
+        braces: tap_dance_8 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_LBRC>, <&kp DE_RBRC>, <&none>;
+        };
+
+        star_slash: tap_dance_10 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_STAR>, <&kp DE_SLASH>, <&none>;
+        };
+
+        equal_hash: tap_dance_11 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_EQUAL>, <&kp DE_HASH>, <&none>;
+        };
+
+        plus_minus: tap_dance_12 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DE_PLUS>, <&kp DE_MINUS>, <&none>;
+        };
+
         gresc: grave_escape {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp ESC>, <&kp GRAVE>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
         };
+
         exc_que: excl_quest {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -71,14 +147,16 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
         };
-        bspc_del: backspace_delete {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-            keep-mods = <(MOD_RSFT)>;
-        };
-    };
+
+//bspc_del: backspace_delete {
+//compatible = "zmk,behavior-mod-morph";
+//#binding-cells = <0>;
+//bindings = <&kp BACKSPACE>, <&kp DELETE>;
+//mods = <(MOD_LSFT|MOD_RSFT)>;
+//keep-mods = <(MOD_RSFT)>;
+//};
+
+};
 
     combos {
         compatible = "zmk,combos";
@@ -192,10 +270,10 @@
         Ex1 {
             label = "Ex1";
             bindings = <
-                        &slash_bslash      &kp DE_N7      &kp DE_N8      &kp DE_N9     &none              &none        &kp HOME      &kp UP       &kp END      &none
-                        &kp DE_N0          &kp DE_N4      &kp DE_N5      &kp DE_N6     &none              &none        &kp LEFT      &kp DOWN     &kp RIGHT    &none
-            &none       &none              &kp DE_N1      &kp DE_N2      &kp DE_N3     &none              &none        &none         &none        &none        &none      &none
-                                                         &none         &none        &none              &none        &none         &none
+                        &slash_backslash                &kp DE_N7      &kp DE_N8      &kp DE_N9     &caret_pipe                 &parenthesis      &kp HOME          &kp UP             &kp END            &star_slash
+                        &kp DE_N0                       &kp DE_N4      &kp DE_N5      &kp DE_N6     &dollar_euro                &braces           &kp LEFT          &kp DOWN           &kp RIGHT          &equal_hash
+            &none       &double_quote_single_quote      &kp DE_N1      &kp DE_N2      &kp DE_N3     &than                       &brackets         &kp DE_PERCENT    &kp DE_AMPERSAND   &kp DE_DEGREE      &plus_minus       &none
+                                                                       &none          &none         &none                       &none            &none             &none
             >;
         };
 
