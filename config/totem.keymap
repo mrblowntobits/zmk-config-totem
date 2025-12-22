@@ -190,6 +190,12 @@
             key-positions = <11 12>;
             bindings = <&kp DE_SZ>;
         };
+        combo_gui {
+            timeout-ms = <50>;
+            key-positions = <20 21>;
+            bindings = <&kp LGUI>;
+        };
+
     };
 
     conditional_layers {
