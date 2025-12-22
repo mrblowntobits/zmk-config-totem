@@ -18,15 +18,12 @@
 #include "keys_de.h"
 
 #define Base            0
-#define Sym             1
-#define Nav             2
-#define Adjust          3
-#define Ex1             4
-#define Ex2             5
-#define Ex3             6
-#define Ex4             7
-#define Ex5             8
-#define Ex6             9
+#define Comp            1
+#define Ex2             2
+#define Ex3             3
+#define Ex4             4
+#define Ex5             5
+#define Ex6             6
 
 &sk {
     release-after-ms = <1000>;
@@ -148,13 +145,13 @@
             keep-mods = <(MOD_RSFT)>;
         };
 
-//bspc_del: backspace_delete {
-//compatible = "zmk,behavior-mod-morph";
-//#binding-cells = <0>;
-//bindings = <&kp BACKSPACE>, <&kp DELETE>;
-//mods = <(MOD_LSFT|MOD_RSFT)>;
-//keep-mods = <(MOD_RSFT)>;
-//};
+        backspace_delete: backspace_delete {
+           compatible = "zmk,behavior-mod-morph";
+           #binding-cells = <0>;
+           bindings = <&kp BACKSPACE>, <&kp DELETE>;
+           mods = <(MOD_RCTRL)>;
+           keep-mods = <(MOD_RCTRL)>;
+        };
 
 };
 
@@ -162,7 +159,7 @@
         compatible = "zmk,combos";
         combo_esc {
             timeout-ms = <50>;
-            key-positions = <0 1>;
+            key-positions = <11 12 13>;
             bindings = <&kp ESC>;
         };
         combo_return {
@@ -219,85 +216,42 @@
         //
         // still missing:
         // - bspc_del
-        // - symbols
 
         Base {
             label = "Base";
             bindings = <
-                        &q_at       &kp DE_W    &kp DE_E     &kp DE_R   &kp DE_T                  &kp DE_Z      &kp DE_U    &kp DE_I      &kp DE_O    &kp DE_P
-                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F   &kp DE_G                  &kp DE_H      &kp DE_J    &kp DE_K      &kp DE_L    &exc_que
-            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V   &kp DE_B                  &kp DE_N      &kp DE_M    &kp DE_COMMA  &kp DE_DOT  &min_tild                  &sk RSFT
-                                                &kp DEL      &lt Ex1 SPACE      &kp LALT             &kp TAB       &lt Ex1 SPACE  &kp BSPC
+                        &q_at       &kp DE_W    &kp DE_E     &kp DE_R            &kp DE_T                  &kp DE_Z      &kp DE_U       &kp DE_I            &kp DE_O    &kp DE_P
+                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F            &kp DE_G                  &kp DE_H      &kp DE_J       &kp DE_K            &kp DE_L    &exc_que
+            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V            &kp DE_B                  &kp DE_N      &kp DE_M       &kp DE_COMMA        &kp DE_DOT  &min_tild     &sk RSFT
+                                                &kp DEL      &lt Ex1 SPACE       &kp LALT                  &kp TAB       &lt Ex1 SPACE  &backspace_delete
             >;
         };
 
-        // Symbol layer. First row has brackets and comparison operators
-        // Home row has shift, alt, gui, ctrl, equal, tilde, and scroll up/down (a little nav spillover)
-        // Central columns have &, @, =, ~, = and ^
-        // Bottom row has tab, hash, pipe, star, minus, plus, caret, backslash, dollar, exclamaion, percent, grave
-
-        Sym {
-            label = "Sym";
-            bindings = <
-                          &kp LT     &kp LBKT  &kp LBRC  &kp LPAR   &kp AMPS         &kp AT     &kp  RPAR      &kp  RBRC    &kp RBKT  &kp GT
-                          &sk LSHFT  &sk LALT  &sk LGUI  &sk LCTRL  &kp EQUAL        &kp TILDE  &msc SCRL_DOWN &msc SCRL_UP &none     &none
-            &kp LG(Z)     &kp HASH   &kp PIPE  &kp STAR  &kp MINUS  &kp PLUS         &kp CARET  &kp  BSLH      &kp  DLLR    &kp EXCL  &kp PRCNT  &kp GRAVE
-                                               &kp DEL   &none      &none            &kp SPACE  &mo  Sym       &kp  LG(RET)
-            >;
-        };
-
-        // Navigation layer. Arrow keys on home row, mouse movement and clicking/scrolling on the left hand
-        // Underscore lives here to be shiftable from the symbol layer
-        // Extra modifiers on the top right row, and number pad on the bottom row
-
-        Nav {
-            label = "Nav";
-            bindings = <
-                    &kp LSHFT      &mkp RCLK      &mmv MOVE_UP   &mkp LCLK       &none                &kp DEL  &sk RCTRL  &sk RGUI  &sk RALT   &sk RSHFT
-                    &msc SCRL_LEFT &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_RIGHT      &kp LEFT &kp DOWN   &kp UP    &kp RIGHT  &kp UNDER
-            &kp TAB &kp N1         &kp N2         &kp N3         &kp N4          &kp N5               &kp N6   &kp N7     &kp N8    &kp N9     &kp N0     &kp MINUS
-                                                  &kp RGUI       &mo Sym         &kp RALT             &none    &none      &none
-            >;
-        };
-
-        // Adjust layer. Activated when both Symbol and Navigation layers are active
-        // Should have media controls on the top row and Bluetooth/power controls on the left
-
-        Adjust {
-            label = "Adjust";
-            bindings = <
-                      &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS        &kp C_PP  &kp C_VOL_DN    &kp C_VOL_UP  &kp C_MUTE      &kp C_NEXT
-                      &bt BT_CLR    &studio_unlock &none         &none                             &caps_word                                    &kp HOME  &kp PG_DN       &kp PG_UP     &kp END         &kp INS
-            &kp F12   &kp F1        &kp F2         &kp F3        &kp F4                            &kp F5                                        &kp F6    &kp F7          &kp F8        &kp F9          &kp F10     &kp F11
-                                                   &none         &none                             &none                                         &none     &none           &none
-            >;
-        };
-
-        Ex1 {
-            label = "Ex1";
+        Comp {
+            label = "Comp";
             bindings = <
                         &slash_backslash                &kp DE_N7      &kp DE_N8      &kp DE_N9     &caret_pipe                 &parenthesis      &kp HOME          &kp UP             &kp END            &star_slash
                         &kp DE_N0                       &kp DE_N4      &kp DE_N5      &kp DE_N6     &dollar_euro                &braces           &kp LEFT          &kp DOWN           &kp RIGHT          &equal_hash
-            &none       &double_quote_single_quote      &kp DE_N1      &kp DE_N2      &kp DE_N3     &than                       &brackets         &kp DE_PERCENT    &kp DE_AMPERSAND   &kp DE_DEGREE      &plus_minus       &none
-                                                                       &none          &none         &none                       &none            &none             &none
+            &trans      &double_quote_single_quote      &kp DE_N1      &kp DE_N2      &kp DE_N3     &than                       &brackets         &kp DE_PERCENT    &kp DE_AMPERSAND   &kp DE_DEGREE      &plus_minus       &trans
+                                                                       &trans         &trans        &trans                      &trans            &trans            &trans
             >;
         };
 
-        Ex2 {
-            label = "Ex2";
+        Func {
+            label = "Func";
             bindings = <
-                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
-                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
-            &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
-                                               &none      &none     &none                   &none       &none     &none
+                         &none       &kp F7     &kp F8     &kp F9    &F10                    &none       &none     &none       &none     &none
+                         &none       &kp F4     &kp F5     &kp F6    &F11                    &none       &none     &none       &none     &none
+            &trans       &none       &kp F1     &kp F2     &kp F3    &F12                    &none       &none     &none       &none     &none        &trans
+                                                &trans     &trans    &trans                  &trans      &trans    &trans
             >;
         };
 
         Ex3 {
             label = "Ex3";
             bindings = <
-                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
-                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
             &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
                                                &none      &none     &none                   &none       &none     &none
             >;
@@ -306,8 +260,8 @@
         Ex4 {
             label = "Ex4";
             bindings = <
-                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
-                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
             &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
                                                &none      &none     &none                   &none       &none     &none
             >;
@@ -316,8 +270,8 @@
         Ex5 {
             label = "Ex5";
             bindings = <
-                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
-                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
             &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
                                                &none      &none     &none                   &none       &none     &none
             >;
@@ -326,8 +280,8 @@
         Ex6 {
             label = "Ex6";
             bindings = <
-                        &none       &none      &none      &none     &none                   &none       &none     &kp UP       &none     &none
-                        &none       &none      &none      &none     &none                   &none       &kp LEFT     &kp DOWN       &kp RIGHT     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
+                        &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none
             &none       &none       &none      &none      &none     &none                   &none       &none     &none       &none     &none        &none
                                                &none      &none     &none                   &none       &none     &none
             >;
