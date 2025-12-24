@@ -37,6 +37,34 @@
 / {
 
     behaviors {
+
+        macros {
+           delete_word: delete_word {
+                  compatible = "zmk,behavior-macro";
+                  #binding-cells = <0>;
+                  bindings = <&macro_press &kp RCTL>,
+                             <&macro_tap &kp DELETE>,
+                             <&macro_release &kp RCTL>;
+           };
+
+           backspace_word: backspace_word {
+                  compatible = "zmk,behavior-macro";
+                  #binding-cells = <0>;
+                  bindings = <&macro_press &kp RCTL>,
+                             <&macro_tap &kp BACKSPACE>,
+                             <&macro_release &kp RCTL>;
+           };
+
+           krunner: krunner {
+                  compatible = "zmk,behavior-macro";
+                  #binding-cells = <0>;
+                  bindings = <&macro_press &kp LALT>,
+                             <&macro_tap &kp F2>,
+                             <&macro_release &kp LALT>;
+           };
+
+        };
+
         q_at: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -130,7 +158,21 @@
             bindings = <&kp DE_PLUS>, <&kp DE_MINUS>, <&none>;
         };
 
-        gresc: grave_escape {
+        backspace_backspaceword: tap_dance_13 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp BACKSPACE>, <&backspace_word>, <&none>;
+        };
+
+        delete_deleteword: tap_dance_14 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp DELETE>, <&delete_word>, <&none>;
+        };
+
+       gresc: grave_escape {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp ESC>, <&kp GRAVE>;
@@ -143,14 +185,6 @@
             bindings = <&kp DE_EXCLAMATION>, <&kp DE_QUESTION>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
-        };
-
-        backspace_delete: backspace_delete {
-           compatible = "zmk,behavior-mod-morph";
-           #binding-cells = <0>;
-           bindings = <&kp BACKSPACE>, <&kp DELETE>;
-           mods = <(MOD_RCTL)>;
-           keep-mods = <(MOD_RCTL)>;
         };
 
 };
@@ -192,9 +226,14 @@
             key-positions = <20 21>;
             bindings = <&kp LGUI>;
         };
+        combo_krunner{
+            timeout-ms = <50>;
+            key-positions = <30 31>;
+            bindings = <&krunner>;
+        };
         combo_func {
             timeout-ms = <50>;
-            key-positions = <20 31>;
+            key-positions = <33 36>;
             bindings = <&sl Func>;
         };
 
@@ -216,19 +255,14 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // Standard QWERTZ layout with layers for Symbols, Navigation, and Adjust functions
-        // left thumb switches to symbol layer, right thumb switches to navigation layer
-        //
-        // still missing:
-        // - bspc_del
 
         Base {
             label = "Base";
             bindings = <
-                        &q_at       &kp DE_W    &kp DE_E     &kp DE_R            &kp DE_T                  &kp DE_Z      &kp DE_U          &kp DE_I            &kp DE_O    &kp DE_P
-                        &kp DE_A    &kp DE_S    &kp DE_D     &kp DE_F            &kp DE_G                  &kp DE_H      &kp DE_J          &kp DE_K            &kp DE_L    &exc_que
-            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C     &kp DE_V            &kp DE_B                  &kp DE_N      &kp DE_M          &kp DE_COMMA        &kp DE_DOT  &min_tild     &sk RSFT
-                                                &kp DEL      &lt Comp SPACE      &kp LALT                  &kp TAB       &lt Comp SPACE    &backspace_delete
+                        &q_at       &kp DE_W    &kp DE_E                 &kp DE_R            &kp DE_T                  &kp DE_Z      &kp DE_U          &kp DE_I                     &kp DE_O    &kp DE_P
+                        &kp DE_A    &kp DE_S    &kp DE_D                 &kp DE_F            &kp DE_G                  &kp DE_H      &kp DE_J          &kp DE_K                     &kp DE_L    &exc_que
+            &sk LCTRL   &kp DE_Y    &kp DE_X    &kp DE_C                 &kp DE_V            &kp DE_B                  &kp DE_N      &kp DE_M          &kp DE_COMMA                 &kp DE_DOT  &min_tild     &sk RSFT
+                                                &delete_deleteword       &lt Comp SPACE      &kp LALT                  &kp TAB       &lt Comp SPACE    &backspace_backspaceword
             >;
         };
 
@@ -247,8 +281,8 @@
             bindings = <
                          &none       &kp F7     &kp F8     &kp F9    &kp F10                    &none       &none     &none       &none     &none
                          &none       &kp F4     &kp F5     &kp F6    &kp F11                    &none       &none     &none       &none     &none
-            &trans       &none       &kp F1     &kp F2     &kp F3    &kp F12                    &none       &none     &none       &none     &none        &trans
-                                                &trans     &trans    &trans                     &trans      &trans    &trans
+            &sk LCTRL     &none       &kp F1     &kp F2     &kp F3    &kp F12                    &none       &none     &none       &none     &none        &trans
+                                                &trans     &trans    &sk LALT                   &trans      &trans    &trans
             >;
         };
 
