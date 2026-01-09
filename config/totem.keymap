@@ -332,6 +332,11 @@
             key-positions = <33 36>;
             bindings = <&tog Func>;
         };
+        combo_caps {
+            timeout-ms = <50>;
+            key-positions = <13 16>;
+            bindings = <&kp CAPSLOCK>;
+        };
 
     };
 
