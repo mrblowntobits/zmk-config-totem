@@ -283,6 +283,13 @@
             mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
         };
 
+        shift_caps: shift_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sk LSHIFT>, <&kp CAPS>, <&none>;
+        };
+
 };
 
     combos {
@@ -372,7 +379,7 @@
                         &q_at              &kp DE_W         &kp DE_E                &kp DE_R                &kp DE_T                  &kp DE_Z      &kp DE_U                &kp DE_I                     &kp DE_O           &kp DE_P
                         &hrm_l LCTRL A     &hrm_l LALT S    &hrm_l LGUI D           &hrm_shift_l LSHFT F    &kp DE_G                  &kp DE_H      &hrm_shift_r RSHFT J    &hrm_r RGUI K                &hrm_r LALT L      &hrm_r_exc_que RCTRL 0
             &none       &kp DE_Y           &kp DE_X         &kp DE_C                &kp DE_V                &kp DE_B                  &kp DE_N      &kp DE_M                &kp DE_COMMA                 &kp DE_DOT         &min_tild                       &none
-                                                            &kp DELETE              &lt Comp SPACE          &kp LALT                  &kp TAB       &lt Comp SPACE          &kp BACKSPACE
+                                                            &kp DELETE              &lt Comp SPACE          &shift_caps               &kp TAB       &lt Comp SPACE          &kp BACKSPACE
             >;
         };
 
