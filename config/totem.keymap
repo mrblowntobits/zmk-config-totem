@@ -383,23 +383,44 @@
             >;
         };
 
+//        Func {
+//            label = "Func";
+//            bindings = <
+//                         &none       &kp F7     &kp F8     &kp F9    &kp F10                    &none       &none       &none       &none       &none
+//                         &none       &kp F4     &kp F5     &kp F6    &kp F11                    &none       &kp LSHFT   &kp LGUI    &kp LALT    &kp LCTRL
+//              &trans     &none       &kp F1     &kp F2     &kp F3    &kp F12                    &none       &none       &none       &none       &none        &trans
+//                                                &trans     &trans    &trans                     &trans      &trans      &trans
+//            >;
+//        };
+
+//        Comp {
+//            label = "Comp";
+//            bindings = <
+//                        &slash_backslash                &kp DE_N7      &kp DE_N8      &kp DE_N9     &caret_pipe                 &parenthesis      &kp HOME          &kp UP             &kp END            &star_slash
+//                        &kp DE_N0                       &kp DE_N4      &kp DE_N5      &kp DE_N6     &dollar_euro                &braces           &kp LEFT          &kp DOWN           &kp RIGHT          &equal_hash
+//            &trans      &double_quote_single_quote      &kp DE_N1      &kp DE_N2      &kp DE_N3     &than                       &brackets         &kp DE_PERCENT    &kp DE_AMPERSAND   &kp DE_DEGREE      &plus_minus       &trans
+//                                                                       &trans         &trans        &trans                      &trans            &trans            &trans
+//            >;
+//        };
+
+
         Comp {
             label = "Comp";
             bindings = <
-                        &slash_backslash                &kp DE_N7      &kp DE_N8      &kp DE_N9     &caret_pipe                 &parenthesis      &kp HOME          &kp UP             &kp END            &star_slash
-                        &kp DE_N0                       &kp DE_N4      &kp DE_N5      &kp DE_N6     &dollar_euro                &braces           &kp LEFT          &kp DOWN           &kp RIGHT          &equal_hash
-            &trans      &double_quote_single_quote      &kp DE_N1      &kp DE_N2      &kp DE_N3     &than                       &brackets         &kp DE_PERCENT    &kp DE_AMPERSAND   &kp DE_DEGREE      &plus_minus       &trans
-                                                                       &trans         &trans        &trans                      &trans            &trans            &trans
+                        &plus_minus      &star_slash    &kp DE_PERCENT  &kp DE_AMPERSAND     &equal_hash                  &double_quote_single_quote      &parenthesis      &braces            &brackets      &than
+                        &kp DE_N6        &kp DE_N7      &kp DE_N8       &kp DE_N9            &kp DE_N9                    &kp LEFT                        &kp DOWN          &kp UP             &kp RIGHT      &braces
+            &none       &kp DE_N1        &kp DE_N2      &kp DE_N3       &kp DE_N4            &kp DE_N5                    &dollar_euro                    &kp HOME          &none              &kp END        &caret_pipe       &none
+                                                        &none           &none                &none                        &none                           &none             &none
             >;
         };
 
         Func {
             label = "Func";
             bindings = <
-                         &none       &kp F7     &kp F8     &kp F9    &kp F10                    &none       &none       &none       &none       &none
-                         &none       &kp F4     &kp F5     &kp F6    &kp F11                    &none       &kp LSHFT   &kp LGUI    &kp LALT    &kp LCTRL
-              &trans     &none       &kp F1     &kp F2     &kp F3    &kp F12                    &none       &none       &none       &none       &none        &trans
-                                                &trans     &trans    &trans                     &trans      &trans      &trans
+                         &kp F11    &kp F12    &none      &none     &none                      &kp C_VOLUME_UP         &kp C_BRIGHTNESS_INC       &none       &none       &none
+                         &kp F6     &kp F7     &kp F8     &kp F9    &kp F10                    &kp C_MUTE              &kp C_STOP                 &kp C_PLAY  &kp C_PREV  &kp C_NEXT
+              &none      &kp F1     &kp F2     &kp F3     &kp F4    &kp F5                     &kp C_VOLUME_DOWN       &kp C_BRIGHTNESS_DEC       &none       &none       &none        &none
+                                               &none      &none     &none                      &none       &none       &none
             >;
         };
 
