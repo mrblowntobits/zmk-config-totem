@@ -123,6 +123,14 @@
 //            keep-mods = <(MOD_RSFT)>;
            };
 
+           percent_degree: percent_degree {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_PERCENT>, <&kp DE_DEGREE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+//            keep-mods = <(MOD_RSFT)>;
+           };
+
            hrm_r_exc_que: homerow_mods_right_exclamation_question {
                compatible = "zmk,behavior-hold-tap";
                #binding-cells = <2>;
@@ -407,10 +415,10 @@
         Comp {
             label = "Comp";
             bindings = <
-                        &plus_minus      &star_slash    &kp DE_PERCENT  &kp DE_AMPERSAND     &equal_hash                  &double_quote_single_quote      &parenthesis      &braces            &brackets      &than
-                        &kp DE_N6        &kp DE_N7      &kp DE_N8       &kp DE_N9            &kp DE_N0                    &kp LEFT                        &kp DOWN          &kp UP             &kp RIGHT      &slash_backslash
-            &none       &kp DE_N1        &kp DE_N2      &kp DE_N3       &kp DE_N4            &kp DE_N5                    &dollar_euro                    &kp HOME          &none              &kp END        &caret_pipe          &none
-                                                        &none           &none                &none                        &none                           &none             &none
+                        &plus_minus      &star_slash    &percent_degree   &kp DE_AMPERSAND     &equal_hash                  &double_quote_single_quote      &parenthesis      &braces            &brackets      &than
+                        &kp DE_N6        &kp DE_N7      &kp DE_N8         &kp DE_N9            &kp DE_N0                    &kp LEFT                        &kp DOWN          &kp UP             &kp RIGHT      &slash_backslash
+            &none       &kp DE_N1        &kp DE_N2      &kp DE_N3         &kp DE_N4            &kp DE_N5                    &dollar_euro                    &kp HOME          &none              &kp END        &caret_pipe          &none
+                                                        &none             &none                &none                        &none                           &none             &none
             >;
         };
 
